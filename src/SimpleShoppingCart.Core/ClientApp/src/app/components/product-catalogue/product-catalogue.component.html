@@ -1,0 +1,37 @@
+<main role="main">
+    <section class=" text-center">
+      <div class="container">
+        <p class="lead text-muted">Below is a collection of simple products such as books, movies and music</p>
+      </div>
+    </section>
+
+    <div class="album py-5 bg-light">
+      <div class="container">
+
+        <div class="row">
+          <div class="col-md-4" *ngFor="let product of products">
+            <div class="card mb-4 box-shadow">
+              <div class="card-body">
+                <h5 class="card-title">{{ product.name }}</h5>
+                <p class="card-text">Media: {{ product.category }}</p>
+                <p class="card-text">About: {{ product.description }}</p>
+                <p class="card-text">Price: {{ product.price | currency:"USD" }}</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <button
+                      id="add-product-{{product.id}}"
+                      class="btn btn-sm btn-outline-secondary"
+                      (click)="addToCart($event, product)">
+                      Add
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </main>

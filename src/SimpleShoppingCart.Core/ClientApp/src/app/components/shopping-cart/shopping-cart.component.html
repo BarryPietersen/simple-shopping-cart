@@ -1,0 +1,71 @@
+<h3 id="tableLabel">Your Cart</h3>
+
+<p *ngIf="!items || items.length === 0"><em>Your cart is empty...better get busy shopping</em></p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="items && items.length > 0">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Category</th>
+      <th>Qty</th>
+      <th>Price</th>
+      <th>Total</th>
+      <th>Remove</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of items">
+      <td>{{ item.product.name }}</td>
+      <td>{{ item.product.category }}</td>
+      <td>
+        <input
+          type="number"
+          [min]="1"
+          [max]="100"
+          [value]="item.quantity"
+          (change)="validateQtyRange($event, item)"
+          style="width: 45px;">
+        </td>
+      <td>{{ item.product.price | currency:'USD' }}</td>
+      <td>{{ item.product.price * item.quantity | currency:'USD' }}</td>
+      <td>
+        <button
+          class="btn btn-sm btn-outline-secondary"
+          (click)="removeItem(item)">
+          <i class="far fa-trash-alt"></i>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class='table table-striped ' style="width: 30%; float: right;" aria-labelledby="tableLabel" *ngIf="orderSummary">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Order Summary</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><b>Total</b></td>
+        <td>{{ orderSummary.total | currency:'USD' }}</td>
+      </tr>
+      <tr>
+        <td><b>Shipping</b></td>
+        <td>{{ orderSummary.shipping | currency:'USD' }}</td>
+      </tr>
+      <tr>
+        <td><b>Grand Total</b></td>
+        <td>{{ orderSummary.grandTotal | currency:'USD' }}</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>
+            <button class="btn btn-primary" (click)="placeOrder()">Place Order
+            </button>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+<br>
