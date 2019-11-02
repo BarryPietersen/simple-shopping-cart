@@ -6,8 +6,13 @@ namespace SimpleShoppingCart.Core.Services
 {
     public class OrderService : IOrderService
     {
+        private const double _threshHold = 50;
         private const double _minShipping = 10.0;
         private const double _maxShipping = 20.0;
+
+        public double ThreshHold => _threshHold;
+        public double MinShipping => _minShipping;
+        public double MaxShipping => _maxShipping;
 
         public OrderService() {}
 
@@ -19,7 +24,7 @@ namespace SimpleShoppingCart.Core.Services
             }
 
             double total = items.Select(i => i.Product.Price * i.Quantity).Sum();
-            double shipping = total <= 50 ? _minShipping : _maxShipping;
+            double shipping = total <= _threshHold ? _minShipping : _maxShipping;
 
             return new OrderSummary
             {
