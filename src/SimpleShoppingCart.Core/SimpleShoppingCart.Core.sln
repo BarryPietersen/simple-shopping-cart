@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.29424.173
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleShoppingCart.Core", "SimpleShoppingCart.Core.csproj", "{5B726297-9B60-4C90-B61B-C4FC7CAF35F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleShoppingCart.Core.Test", "..\SimpleShoppingCart.Core.Test\SimpleShoppingCart.Core.Test.csproj", "{A6B2E638-C583-4398-B998-BD5660B83FEB}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
