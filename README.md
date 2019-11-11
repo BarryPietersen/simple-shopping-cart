@@ -27,8 +27,19 @@ The pages should be neat but the focus is not the design.
 This application was generated using the ASP.NET Core and Angular template: 
 https://docs.microsoft.com/en-us/aspnet/core/client-side/spa/angular?view=aspnetcore-3.0&tabs=visual-studio
 
+##### Running
+
 To run the app in developement mode:
 1. set an environment variable by running command: SET ASPNETCORE_Environment=Development
 2. build the core solution in visual studio
 3. navigate to the core solution directory in cmd and run command: dotnet run
 4. observe the cmd logs for url
+
+To run the app in a docker container:
+1. ensure docker is running and using linux containers
+2. open terminal in SimpleShoppingCart\src\SimpleShoppingCart.Core
+2. run command: docker build -t simple-shopping-cart-image . <em>(this may take a moment)</em>
+3. verify image created successfuly run command: docker images <em>(should see an image name simple-shopping-cart-image)</em>
+4. run the continer: docker run -p 8080:80 simple-shopping-cart-image
+5. navigate to <http://localhost:8080>
+6. trouble shooting: <https://medium.com/@ali.bahrami/deploy-an-angular-asp-net-core-webapi-on-docker-ab3546a06803>
